@@ -1,16 +1,14 @@
 import type { Context } from '@actions/github/lib/context';
-import type { components } from '@octokit/openapi-types';
-import type { Octokit } from '@technote-space/github-action-helper/dist/types';
+import type { Octokit } from '@technote-space/github-action-helper';
 import type { Logger } from '@technote-space/github-action-log-helper';
 import { setOutput, exportVariable, getInput } from '@actions/core';
 import { Utils } from '@technote-space/github-action-helper';
 import { CONCLUSIONS } from './constant';
 
-type ActionsListJobsForWorkflowRunResponseData = components['schemas']['job'];
 
 export const getTargetRunId = (context: Context): number => /^\d+$/.test(getInput('TARGET_RUN_ID')) ? Number(getInput('TARGET_RUN_ID')) : context.runId;
 
-export const getJobs = async(octokit: Octokit, context: Context): Promise<Array<ActionsListJobsForWorkflowRunResponseData>> => octokit.paginate(
+export const getJobs = async(octokit: Octokit, context: Context) => octokit.paginate(
   octokit.rest.actions.listJobsForWorkflowRun,
   {
     ...context.repo,
