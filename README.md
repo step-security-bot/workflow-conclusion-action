@@ -1,3 +1,5 @@
+[![StepSecurity Maintained Action](https://raw.githubusercontent.com/step-security/maintained-actions-assets/main/assets/maintained-action-banner.png)](https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions)
+
 # Workflow Conclusion Action
 
 [![CI Status](https://github.com/step-security/workflow-conclusion-action/workflows/CI/badge.svg)](https://github.com/step-security/workflow-conclusion-action/actions)
