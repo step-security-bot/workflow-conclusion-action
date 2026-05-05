@@ -1,7 +1,7 @@
 'use strict';
 
-var path$1 = require('path');
 var fs$2 = require('fs');
+var path$1 = require('path');
 var require$$0$1 = require('os');
 var require$$0$2 = require('crypto');
 var require$$1$3 = require('http');
@@ -109712,6 +109712,7 @@ async function validateSubscription() {
         return;
     const serverUrl = process.env.GITHUB_SERVER_URL || 'https://github.com';
     const body = { action: action || '' };
+    // eslint-disable-next-line camelcase
     if (serverUrl !== 'https://github.com')
         body.ghes_server = serverUrl;
     try {
@@ -109719,7 +109720,7 @@ async function validateSubscription() {
     }
     catch (error) {
         if (isAxiosError(error) && error.response?.status === 403) {
-            coreExports.error(`\u001b[1;31mThis action requires a StepSecurity subscription for private repositories.\u001b[0m`);
+            coreExports.error('\u001b[1;31mThis action requires a StepSecurity subscription for private repositories.\u001b[0m');
             coreExports.error(`\u001b[31mLearn how to enable a subscription: ${docsUrl}\u001b[0m`);
             process.exit(1);
         }
